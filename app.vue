@@ -7,7 +7,7 @@
     <Link
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Inter:wght@700&display=swap"
       rel="stylesheet" />
-    <Title>Electra</title>
+    <Title>Electra Store</title>
   </Head>
 
   <Body>

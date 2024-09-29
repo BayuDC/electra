@@ -1,17 +1,10 @@
-<script setup lang="ts">
-
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <Main>
     <Section title="Electronic Parts">
-      <Grid>
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-      </Grid>
+      Page: index
+      <UButton>Hello</UButton>
     </Section>
   </Main>
 </template>
