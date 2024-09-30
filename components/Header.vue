@@ -6,7 +6,7 @@ const links = [{
 }, {
   label: 'Cart',
   icon: 'i-heroicons-shopping-cart',
-  to: '/test  '
+  to: '/test'
 }, {
   label: 'Transaction',
   icon: 'i-heroicons-clipboard-document-list',
