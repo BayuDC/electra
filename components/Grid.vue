@@ -6,7 +6,7 @@ defineExpose({
 </script>
 
 <template>
-  <ul class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4" ref="element">
+  <ul class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4" ref="element">
     <slot />
   </ul>
 </template>
