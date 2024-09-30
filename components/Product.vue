@@ -4,7 +4,7 @@
   <UCard :ui="{
     background: 'dark:bg-black',
     header: {
-      padding: 'px-4 py-5 sm:p-4',
+      padding: 'px-4 pt-4 pb-3 sm:p-4',
     },
     body: {
       base: 'text-white/80',
@@ -12,7 +12,7 @@
     },
     footer: {
       base: '',
-      padding: 'px-4 py-5 sm:p-4 sm:pt-2',
+      padding: 'px-4 pb-4 pt-2 sm:p-4 sm:pt-2',
     },
   }">
     <template #header>
