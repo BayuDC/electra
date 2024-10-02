@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { data } = await useMyFetch('/auth/me');
+
+console.log(data.value);
+</script>
 
 <template>
   <div class="min-h-screen flex flex-col">
