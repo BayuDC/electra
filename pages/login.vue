@@ -35,7 +35,7 @@ async function onSubmit() {
 </script>
 
 <template>
-  <div class="h-screen relative">
+  <div class="h-screen relative overflow-hidden">
     <div class="max-w-md mx-auto h-full flex items-center">
       <Main class="w-full">
         <Section title="Electra Store" center-head>
