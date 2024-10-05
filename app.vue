@@ -31,6 +31,7 @@
 .slide-leave-active {
   @apply transition duration-300;
 }
+.slide-enter-from,
 .slide-leave-to {
   @apply opacity-0 translate-y-20;
 }

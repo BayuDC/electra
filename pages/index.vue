@@ -4,7 +4,7 @@ silentLogin();
 const { data: products } = await useMyFetch<
   {
     name: string;
-    price: number;
+    price: string;
     unit: string;
     picture: string;
     category: {
@@ -22,7 +22,7 @@ const { data: products } = await useMyFetch<
           v-for="p in products"
           v-bind="{
             name: p.name,
-            price: p.price,
+            price: parseInt(p.price),
             picture: p.picture,
             unit: p.unit,
             category: p.category.slug,

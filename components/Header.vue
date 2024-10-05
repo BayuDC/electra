@@ -8,7 +8,7 @@ const links = [
   {
     label: 'Cart',
     icon: 'i-heroicons-shopping-cart',
-    to: '/test',
+    to: '/cart',
   },
   {
     label: 'Transaction',
@@ -32,7 +32,7 @@ const user = useAuth();
             v-if="user"
             :links="links"
             :ui="{
-              active: 'after:h-0',
+              active: 'dark:after:h-0 after:h-0',
               label: 'hidden sm:block',
               icon: {
                 base: 'w-6 h-6',
