@@ -12,4 +12,9 @@ export default defineNuxtConfig({
       baseUrl: process.env.BASE_URL,
     },
   },
+  routeRules: {
+    '/cart': {
+      ssr: false,
+    },
+  },
 });

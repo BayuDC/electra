@@ -36,7 +36,10 @@ const props = defineProps<{
     {{ name }}
     <template #footer>
       <div class="flex">
-        <div class="font-bold text-lg">Rp{{ price }}/{{ unit }}</div>
+        <div class="font-bold text-lg">
+          <Money :amount="price" />
+          <span class="text-gray-400">/{{ unit }}</span>
+        </div>
         <div class="ml-auto flex items-center">
           <UDropdown
             :items="[

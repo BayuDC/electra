@@ -27,19 +27,22 @@ const user = useAuth();
         <NuxtLink to="/">Electra Store</NuxtLink>
       </h1>
       <div class="ml-auto">
-        <Transition name="blur">
-          <UHorizontalNavigation
-            v-if="user"
-            :links="links"
-            :ui="{
-              active: 'dark:after:h-0 after:h-0',
-              label: 'hidden sm:block',
-              icon: {
-                base: 'w-6 h-6',
-              },
-            }"
-          />
-          <UButton v-else class="my-2.5" to="/login">Log In</UButton>
+        <Transition name="blur" mode="out-in">
+          <div v-if="user">
+            <UHorizontalNavigation
+              :links="links"
+              :ui="{
+                active: 'dark:after:h-0 after:h-0',
+                label: 'hidden sm:block',
+                icon: {
+                  base: 'w-6 h-6',
+                },
+              }"
+            />
+          </div>
+          <div v-else>
+            <UButton class="my-2.5" to="/login">Log In</UButton>
+          </div>
         </Transition>
       </div>
     </Container>
