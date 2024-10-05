@@ -8,11 +8,15 @@ const props = defineProps<{
   quantity: number;
   totalPrice: number;
 }>();
+
+const emit = defineEmits<{
+  (e: 'update-quantity', quantity: number): void;
+}>();
 </script>
 
 <template>
   <div>
-    <div class="grid grid-cols-[1fr,auto] md:grid-cols-[1fr,auto,auto] items-center gap-4 md:gap-10 lg:gap-16">
+    <div class="grid grid-cols-[1fr,auto] md:grid-cols-[1fr,120px,120px] items-center gap-4 md:gap-10 lg:gap-16">
       <div class="flex py-4">
         <div class="h-24 w-24 md:h-28 md:w-28 overflow-hidden rounded-md">
           <img class="object-cover" :src="picture" alt="" />
@@ -24,21 +28,45 @@ const props = defineProps<{
             <span>/{{ unit }}</span>
           </div>
           <div class="mt-auto">
-            <UButton class="md:flex hidden" variant="soft" size="sm" color="rose" icon="i-heroicons-trash"
+            <UButton
+              class="md:flex hidden"
+              variant="soft"
+              size="sm"
+              color="rose"
+              icon="i-heroicons-trash"
+              @click="emit('update-quantity', 0)"
               >Remove</UButton
             >
             <div class="text-white text-lg font-bold md:hidden"><Money :amount="price * quantity" /></div>
           </div>
         </div>
       </div>
-      <div class="flex flex-col-reverse md:flex-row items-center">
-        <UButton size="sm" color="gray" variant="link" icon="i-heroicons-minus-16-solid" />
-        <div class="px-2 py-2 text-white font-bold text-sm md:text-base bg-gray-800 rounded-md ring-1 ring-gray-700">
-          {{ quantity }}
-        </div>
-        <UButton size="sm" color="gray" variant="link" icon="i-heroicons-plus-16-solid" />
+      <div class="flex flex-col-reverse md:flex-row items-center justify-self-center">
+        <UButton
+          size="sm"
+          color="gray"
+          variant="link"
+          icon="i-heroicons-minus-16-solid"
+          @click="emit('update-quantity', quantity - 1)"
+        />
+        <UInput
+          :model-value="quantity"
+          class="w-12"
+          :ui="{
+            base: 'text-white font-bold text-sm md:text-base text-center rounded-md ring-1 ring-gray-700',
+          }"
+          @change="v => emit('update-quantity', parseInt(v))"
+          type="number"
+        ></UInput>
+        <UButton
+          size="sm"
+          color="gray"
+          variant="link"
+          icon="i-heroicons-plus-16-solid"
+          @click="emit('update-quantity', quantity + 1)"
+        />
       </div>
-      <div class="md:block hidden">
+      <div class="md:block hidden justify-self-end">
         <div class="text-white text-lg font-bold"><Money :amount="price * quantity" /></div>
       </div>
     </div>

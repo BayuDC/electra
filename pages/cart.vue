@@ -1,31 +1,10 @@
 <script setup lang="ts">
-const { data: cart } = await useMyFetch<{
-  products: {
-    id: number;
-    name: string;
-    slug: string;
-    price: string;
-    unit: string;
-    picture: string;
-    pivot: {
-      quantity: number;
-    };
-    totalPrice: number;
-  }[];
-}>('/cart', {
-  default: () => ({
-    products: [] as any[],
-  }),
-
-  transform: data => ({
-    products: data.products.map((p: any) => ({
-      ...p,
-      totalPrice: parseInt(p.price) * p.pivot.quantity,
-    })),
-  }),
+definePageMeta({
+  middleware: ['auth'],
 });
 
-const totalPrice = computed(() => cart.value.products.reduce((acc, p) => acc + p.totalPrice, 0));
+const cart = useCartStore();
+await cart.load();
 </script>
 
 <template>
@@ -51,10 +30,11 @@ const totalPrice = computed(() => cart.value.products.reduce((acc, p) => acc + p
                 quantity: p.pivot.quantity,
                 totalPrice: p.totalPrice,
               }"
+              @update-quantity="q => cart.update(p.id, q)"
             />
           </div>
         </UCard>
-        <CartSummary :totalPrice="totalPrice" />
+        <CartSummary :totalPrice="cart.totalPrice" />
       </div>
     </Section>
   </Main>
