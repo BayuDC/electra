@@ -13,8 +13,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/cart': {
-      ssr: false,
-    },
+    '/cart': { ssr: false },
+    '/admin/**': { ssr: false, appMiddleware: 'auth' },
+    '/admin/manage': { redirect: '/admin/manage/product' },
   },
 });

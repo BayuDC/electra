@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const links = [
+const userLinks = [
   {
     label: 'Chat',
     icon: 'i-heroicons-chat-bubble-bottom-center-text',
@@ -16,6 +16,23 @@ const links = [
     to: '/test',
   },
 ];
+const adminLinks = [
+  {
+    label: 'Manage  ',
+    icon: 'i-heroicons-cog-6-tooth',
+    to: '/admin/manage',
+  },
+  {
+    label: 'Chat',
+    icon: 'i-heroicons-chat-bubble-left-right',
+    to: '/admin/chat',
+  },
+  {
+    label: 'Transaction',
+    icon: 'i-heroicons-clipboard-document-list',
+    to: '/admin/transaction',
+  },
+];
 
 const user = useAuth();
 </script>
@@ -30,7 +47,7 @@ const user = useAuth();
         <Transition name="blur" mode="out-in">
           <div v-if="user">
             <UHorizontalNavigation
-              :links="links"
+              :links="user.role == 'admin' ? adminLinks : userLinks"
               :ui="{
                 active: 'dark:after:h-0 after:h-0',
                 label: 'hidden sm:block',
