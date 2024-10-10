@@ -73,12 +73,20 @@ async function onSubmit() {
         </Section>
       </Main>
       <Transition name="toast" mode="out-in">
-        <div v-if="status == 'error'">
-          <Toast icon="i-heroicons-x-circle-16-solid" message="Log in failed!" color="rose" @dispose="clear" />
-        </div>
-        <div v-else-if="status == 'success'">
-          <Toast icon="i-heroicons-check-circle-20-solid" message="Log in success!" color="green" @dispose="clear" />
-        </div>
+        <Toast
+          v-if="status == 'error'"
+          icon="i-heroicons-x-circle-16-solid"
+          message="Log in failed!"
+          color="rose"
+          @dispose="clear"
+        />
+        <Toast
+          v-else-if="status == 'success'"
+          icon="i-heroicons-check-circle-20-solid"
+          message="Log in success!"
+          color="green"
+          @dispose="clear"
+        />
       </Transition>
     </div>
   </div>

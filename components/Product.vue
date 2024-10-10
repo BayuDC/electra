@@ -1,11 +1,23 @@
 <script setup lang="ts">
 const props = defineProps<{
+  id: number;
   name: string;
   price: number;
   unit: string;
   picture: string;
   category: string;
 }>();
+const emit = defineEmits<{
+  (e: 'cart-added'): void;
+}>();
+
+const cart = useCartStore();
+
+async function addToCart() {
+  await cart.update(props.id, 1);
+  await cart.load();
+  emit('cart-added');
+}
 </script>
 
 <template>
@@ -51,6 +63,7 @@ const props = defineProps<{
                 {
                   label: 'Add to cart',
                   icon: 'i-heroicons-shopping-cart',
+                  click: addToCart,
                 },
               ],
             ]"

@@ -21,7 +21,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .toast-enter-active,
 .toast-leave-active {
   @apply transition duration-300;
