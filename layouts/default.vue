@@ -3,7 +3,9 @@
 <template>
   <div class="min-h-screen overflow-hidden relative flex flex-col">
     <Header />
-    <slot />
+    <div>
+      <slot />
+    </div>
 
     <div id="modal"></div>
   </div>

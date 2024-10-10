@@ -55,9 +55,11 @@ const emit = defineEmits<{
           :ui="{
             base: 'text-white font-bold text-sm md:text-base text-center rounded-md ring-1 ring-gray-700',
           }"
-          @change="v => emit('update-quantity', parseInt(v))"
+          @change="v => emit('update-quantity', parseInt(v) || quantity)"
+          pattern="[0-9]*"
           type="number"
         ></UInput>
+
         <UButton
           size="sm"
           color="gray"

@@ -53,8 +53,9 @@ watch(
         />
       </Grid>
 
-      <Teleport to="#modal">
-        <div>
+      <div>
+        <!-- TODO error hydration -->
+        <Teleport to="#modal">
           <Transition name="toast" mode="out-in">
             <Toast
               v-if="showModal"
@@ -63,8 +64,8 @@ watch(
               color="green"
             />
           </Transition>
-        </div>
-      </Teleport>
+        </Teleport>
+      </div>
     </Section>
   </Main>
 </template>

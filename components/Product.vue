@@ -11,10 +11,18 @@ const emit = defineEmits<{
   (e: 'cart-added'): void;
 }>();
 
+const user = useAuth();
 const cart = useCartStore();
 
 async function addToCart() {
-  await cart.update(props.id, 1);
+  if (!user.value) {
+    return navigateTo('/login');
+  }
+
+  await cart.load();
+  const product = cart.products.find(p => p.id === props.id);
+
+  await cart.update(props.id, (product?.pivot.quantity || 0) + 1);
   await cart.load();
   emit('cart-added');
 }

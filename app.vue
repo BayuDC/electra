@@ -35,4 +35,15 @@
 .slide-leave-to {
   @apply opacity-0 translate-y-20;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 </style>
