@@ -2,17 +2,17 @@
 const links = [
   {
     label: 'Product',
-    icon: 'i-heroicons-shopping-cart',
-    to: '/admin/manage',
+    icon: 'i-heroicons-shopping-bag',
+    to: '/admin/manage/product',
   },
   {
     label: 'Category',
-    icon: 'i-heroicons-cog-6-tooth',
+    icon: 'i-heroicons-tag',
     to: '/admin/manage/category',
   },
   {
     label: 'User',
-    icon: 'i-heroicons-chat-bubble-left-right',
+    icon: 'i-heroicons-users',
     to: '/admin/manage/user',
   },
 ];

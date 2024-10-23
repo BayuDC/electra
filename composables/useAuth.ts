@@ -23,10 +23,12 @@ export async function login(): Promise<boolean> {
   return true;
 }
 
-export async function silentLogin() {
+export async function silentLogin(cb = (user: User) => {}) {
   onMounted(async () => {
     nextTick(async () => {
       await login();
+      const auth = useAuth();
+      cb(auth.value!);
     });
   });
 }

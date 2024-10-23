@@ -1,8 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Category {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+const { data: categories } = await useMyFetch<Category[]>('/categories');
+
+const cols = [
+  { key: 'id', label: 'Id' },
+  { key: 'name', label: 'Name' },
+];
+</script>
 
 <template>
   <div>
-    Page: admin/manage/category
+    <UTable :rows="categories" :columns="cols" />
   </div>
 </template>
 

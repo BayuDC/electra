@@ -1,5 +1,9 @@
 <script setup lang="ts">
-silentLogin();
+silentLogin(user => {
+  if (user.role == 'admin') {
+    navigateTo('/admin/manage');
+  }
+});
 
 const { data: products } = await useMyFetch<
   {
