@@ -22,6 +22,13 @@ export async function login(): Promise<boolean> {
   auth.value = data.value;
   return true;
 }
+export async function logout() {
+  const auth = useAuth();
+  const token = useLocalStorage('token', '');
+
+  auth.value = null;
+  token.value = '';
+}
 
 export async function silentLogin(cb = (user: User) => {}) {
   onMounted(async () => {

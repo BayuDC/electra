@@ -58,17 +58,18 @@ watch(
       </Grid>
 
       <div>
-        <!-- TODO error hydration -->
-        <Teleport to="#modal">
-          <Transition name="toast" mode="out-in">
-            <Toast
-              v-if="showModal"
-              icon="i-heroicons-check-circle-20-solid"
-              message="Product added to cart!"
-              color="green"
-            />
-          </Transition>
-        </Teleport>
+        <ClientOnly>
+          <Teleport to="#modal">
+            <Transition name="toast" mode="out-in">
+              <Toast
+                v-if="showModal"
+                icon="i-heroicons-check-circle-20-solid"
+                message="Product added to cart!"
+                color="green"
+              />
+            </Transition>
+          </Teleport>
+        </ClientOnly>
       </div>
     </Section>
   </Main>
