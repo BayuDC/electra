@@ -5,7 +5,7 @@ const userLinks = [
   {
     label: 'Chat',
     icon: 'i-heroicons-chat-bubble-bottom-center-text',
-    to: '/test',
+    to: '/chat',
   },
   {
     label: 'Cart',

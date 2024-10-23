@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/cart': { ssr: false },
+    '/chat': { ssr: false },
     '/admin/**': { ssr: false, appMiddleware: 'auth' },
     '/admin/manage': { redirect: '/admin/manage/product' },
   },
