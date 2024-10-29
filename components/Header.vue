@@ -15,7 +15,7 @@ const userLinks = [
   {
     label: 'Transaction',
     icon: 'i-heroicons-clipboard-document-list',
-    to: '/test',
+    to: '/transaction',
   },
 ];
 const adminLinks = [

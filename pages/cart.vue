@@ -20,6 +20,7 @@ await cart.load();
         >
           <div class="flex flex-col divide-y divide-gray-800">
             <CartItem
+              v-if="cart.products.length"
               v-for="p in cart.products"
               v-bind="{
                 id: p.id,
@@ -32,6 +33,11 @@ await cart.load();
               }"
               @update-quantity="q => cart.update(p.id, q)"
             />
+            <div v-else>
+              <div class="p-4 text-center text-gray-500 min-h-72 flex items-center justify-center">
+                No items in cart
+              </div>
+            </div>
           </div>
         </UCard>
         <CartSummary :totalPrice="cart.totalPrice" />

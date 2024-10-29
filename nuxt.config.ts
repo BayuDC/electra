@@ -17,5 +17,6 @@ export default defineNuxtConfig({
     '/chat': { ssr: false },
     '/admin/**': { ssr: false, appMiddleware: 'auth' },
     '/admin/manage': { redirect: '/admin/manage/product' },
+    '/transaction': { ssr: false },
   },
 });
