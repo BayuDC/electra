@@ -11,10 +11,11 @@ const { data: products } = await useMyFetch<
     name: string;
     price: string;
     unit: string;
-    picture: string;
+    picture_url: string;
     category: {
-      slug: string;
+      name: string;
     };
+    description: string;
   }[]
 >('/products');
 
@@ -40,7 +41,7 @@ watch(
 
 <template>
   <Main class="">
-    <Section title="Electronic Parts">
+    <Section title="All Products">
       <Grid>
         <Product
           v-for="p in products"
@@ -48,9 +49,10 @@ watch(
             id: p.id,
             name: p.name,
             price: parseInt(p.price),
-            picture: p.picture,
+            picture: p.picture_url,
             unit: p.unit,
-            category: p.category.slug,
+            category: p.category.name,
+            description: p.description,
           }"
           :key="p.id"
           @cart-added="showModal = true"

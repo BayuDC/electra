@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const config = useRuntimeConfig();
+
 const props = defineProps<{
   id: number;
   name: string;
@@ -6,6 +8,7 @@ const props = defineProps<{
   unit: string;
   picture: string;
   category: string;
+  description: string;
 }>();
 const emit = defineEmits<{
   (e: 'cart-added'): void;
@@ -26,6 +29,8 @@ async function addToCart() {
   await cart.load();
   emit('cart-added');
 }
+
+const isOpen = ref(false);
 </script>
 
 <template>
@@ -47,16 +52,22 @@ async function addToCart() {
   >
     <template #header>
       <div class="relative">
-        <div class="overflow-hidden rounded-md" style="aspect-ratio: 1/1">
-          <img :src="picture" />
-        </div>
-        <UBadge class="font-bold absolute -top-1 -left-1">#{{ category }}</UBadge>
+        <div
+          @click="isOpen = true"
+          class="overflow-hidden rounded-md cursor-pointer"
+          :style="`aspect-ratio: 1/1; background-image: url(${
+            config.public.baseUrl + picture
+          }); background-size: cover; background-position: center;`"
+        ></div>
+        <UBadge class="font-bold absolute -top-1 -left-1">{{ category }}</UBadge>
       </div>
     </template>
-    {{ name }}
+    <div class="truncate">
+      {{ name }}
+    </div>
     <template #footer>
       <div class="flex">
-        <div class="font-bold text-lg">
+        <div class="font-bold text-sm md:text-base">
           <Money :amount="price" />
           <span class="text-gray-400">/{{ unit }}</span>
         </div>
@@ -81,6 +92,31 @@ async function addToCart() {
         </div>
       </div>
     </template>
+    <UModal v-model="isOpen">
+      <div class="p-4 flex gap-4 flex-col items-center">
+        <div
+          class="overflow-hidden rounded-md w-96"
+          :style="`aspect-ratio: 1/1; background-image: url(${
+            config.public.baseUrl + picture
+          }); background-size: cover; background-position: center;`"
+        ></div>
+        <div>
+          <h2 class="text-xl font-bold">{{ name }}</h2>
+          <p class="text-gray-400">{{ category }}</p>
+          <p class="mt-2">{{ description }}</p>
+          <div class="mt-4">
+            <div class="font-bold text-lg">
+              <Money :amount="price" />
+              <span class="text-gray-400">/{{ unit }}</span>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <UButton class="mt-4" @click="addToCart">Add to Cart</UButton>
+              <UButton class="mt-4">Ask Admin</UButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </UModal>
   </UCard>
 </template>
 

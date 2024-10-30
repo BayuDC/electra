@@ -27,7 +27,7 @@ await cart.load();
                 name: p.name,
                 price: parseInt(p.price),
                 unit: p.unit,
-                picture: p.picture,
+                picture: p.picture_url,
                 quantity: p.pivot.quantity,
                 totalPrice: p.totalPrice,
               }"
@@ -40,7 +40,7 @@ await cart.load();
             </div>
           </div>
         </UCard>
-        <CartSummary :totalPrice="cart.totalPrice" />
+        <CartSummary :totalPrice="cart.totalPrice" :is-empty="!cart.products.length" />
       </div>
     </Section>
   </Main>

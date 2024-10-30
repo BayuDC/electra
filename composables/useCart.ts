@@ -6,7 +6,7 @@ interface Product {
   slug: string;
   price: string;
   unit: string;
-  picture: string;
+  picture_url: string;
   pivot: {
     quantity: number;
   };
@@ -26,7 +26,7 @@ export const useCartStore = defineStore('carts', {
     async load() {
       const { data: cart } = await useMyFetch<{
         products: Product[];
-      }>('/cart', {
+      }>('/cart/products', {
         default: () => ({
           products: [] as any[],
         }),
@@ -43,7 +43,7 @@ export const useCartStore = defineStore('carts', {
     },
 
     async update(productId: number, quantity: number) {
-      await useMyFetch('/cart', {
+      await useMyFetch('/cart/products', {
         method: 'PATCH',
         body: {
           product_id: productId,

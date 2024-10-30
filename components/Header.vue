@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const auth = useAuth();
-
 const userLinks = [
   {
     label: 'Chat',
@@ -84,7 +82,7 @@ const user = useAuth();
                   <div class="text-left">
                     <p>Signed in as</p>
                     <p class="truncate font-medium text-gray-900 dark:text-white">
-                      {{ auth?.email }}
+                      {{ user.email }}
                     </p>
                   </div>
                 </template>

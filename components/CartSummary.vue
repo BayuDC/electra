@@ -1,7 +1,31 @@
 <script setup lang="ts">
 const props = defineProps<{
   totalPrice: number;
+  isEmpty: boolean;
 }>();
+const user = useAuth();
+const payment = ref('');
+const address = ref(user.value.address);
+
+const paymentCode = computed(() => {
+  if (payment.value === 'Bayar di tempat') {
+    return 'cash';
+  }
+
+  return 'debit';
+});
+
+async function checkout() {
+  const { data } = await useMyFetch('/transactions/checkout', {
+    method: 'POST',
+    body: JSON.stringify({
+      payment: paymentCode.value,
+      address: address.value,
+    }),
+  });
+
+  navigateTo('/transaction');
+}
 </script>
 
 <template>
@@ -15,12 +39,16 @@ const props = defineProps<{
       </div>
       <div>
         <div class="text-xs font-bold text-gray-400 mb-2">Payment</div>
-        <USelectMenu :options="['Bayar di tempat', 'Bayar pake doa']" />
+        <USelectMenu v-model="payment" :options="['Bayar di tempat', 'Bayar pake doa']" />
+      </div>
+      <div>
+        <div class="text-xs font-bold text-gray-400 mb-2">Address</div>
+        <UInput v-model="address" />
       </div>
     </div>
     <template #footer>
       <div class="py-2">
-        <UButton block>Checkout</UButton>
+        <UButton block @click="checkout" :disabled="isEmpty || !address || !payment">Checkout</UButton>
       </div>
     </template>
   </UCard>

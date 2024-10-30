@@ -12,17 +12,24 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: 'update-quantity', quantity: number): void;
 }>();
+
+const config = useRuntimeConfig();
 </script>
 
 <template>
   <div>
     <div class="grid grid-cols-[1fr,auto] md:grid-cols-[1fr,120px,120px] items-center gap-4 md:gap-10 lg:gap-16">
-      <div class="flex py-4">
-        <div class="h-24 w-24 md:h-28 md:w-28 overflow-hidden rounded-md">
-          <img class="object-cover" :src="picture" alt="" />
+      <div class="grid grid-cols-[96px,1fr] py-4">
+        <div class="overflow-hidden rounded-md w-24 h-24">
+          <div
+            class="w=fill h-full"
+            :style="`aspect-ratio: 1/1; background-image: url(${
+              config.public.baseUrl + picture
+            }); background-size: cover; background-position: center;`"
+          ></div>
         </div>
         <div class="ml-4 flex flex-col">
-          <div class="text-base md:text-xl text-white font-bold">{{ name }}</div>
+          <div class="text-base md:text-xl text-white font-bold grid">{{ name }}</div>
           <div class="mt-2 text-sm md:text-base text-gray-400">
             <Money :amount="price" />
             <span>/{{ unit }}</span>

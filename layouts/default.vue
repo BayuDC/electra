@@ -7,7 +7,7 @@
       <slot />
     </div>
 
-    <div id="modal"></div>
+    <div id="modal" class="fixed bottom-0 w-full"></div>
   </div>
 </template>
 
