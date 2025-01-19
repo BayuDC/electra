@@ -56,7 +56,7 @@ const isOpen = ref(false);
           @click="isOpen = true"
           class="overflow-hidden rounded-md cursor-pointer"
           :style="`aspect-ratio: 1/1; background-image: url(${
-            config.public.baseUrl + picture
+            'https://electra.icu' + picture
           }); background-size: cover; background-position: center;`"
         ></div>
         <UBadge class="font-bold absolute -top-1 -left-1">{{ category }}</UBadge>
@@ -97,7 +97,7 @@ const isOpen = ref(false);
         <div
           class="overflow-hidden rounded-md w-96"
           :style="`aspect-ratio: 1/1; background-image: url(${
-            config.public.baseUrl + picture
+            'https://electra.icu' + picture
           }); background-size: cover; background-position: center;`"
         ></div>
         <div>
