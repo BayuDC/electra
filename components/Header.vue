@@ -1,11 +1,6 @@
 <script setup lang="ts">
 const userLinks = [
   {
-    label: 'Chat',
-    icon: 'i-heroicons-chat-bubble-bottom-center-text',
-    to: '/chat',
-  },
-  {
     label: 'Cart',
     icon: 'i-heroicons-shopping-cart',
     to: '/cart',
