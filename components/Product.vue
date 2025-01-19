@@ -78,6 +78,9 @@ const isOpen = ref(false);
                 {
                   label: 'Ask admin',
                   icon: 'i-heroicons-chat-bubble-bottom-center-text',
+                  click: () => {
+                    navigateTo('https://wa.me/6281229939193');
+                  },
                 },
                 {
                   label: 'Add to cart',
