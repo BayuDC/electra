@@ -111,7 +111,7 @@ const isOpen = ref(false);
             </div>
             <div class="flex gap-2 flex-wrap">
               <UButton class="mt-4" @click="addToCart">Add to Cart</UButton>
-              <UButton class="mt-4">Ask Admin</UButton>
+              <UButton class="mt-4" to="https://wa.me/6281229939193">Ask Admin</UButton>
             </div>
           </div>
         </div>
