@@ -24,7 +24,7 @@ const config = useRuntimeConfig();
           <div
             class="w=fill h-full"
             :style="`aspect-ratio: 1/1; background-image: url(${
-              config.public.baseUrl + picture
+              'https://electra.icu' + picture
             }); background-size: cover; background-position: center;`"
           ></div>
         </div>
